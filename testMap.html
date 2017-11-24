@@ -20,6 +20,7 @@
   </head>
   <body>
     <div id="map"></div>
+	<script src="C:\Users\cciotola\Desktop\geolocation\geoxmlv3.js"></script>
     <script>
 
       function initMap() {
@@ -27,11 +28,38 @@
           zoom: 11,
           center: {lat: 41.876, lng: -87.624}
         });
+		
+		var myParser = new geoXML3.parser({
+		map: map,
+		singleInfoWindow: true,
+        zoom : false,
+        afterParse: loadPlacemarks
+    });
+    
+    myParser.parse('cta.kml')
+        //myParser.parse('C:\Users\cciotola\Desktop\geolocation\cta.kml');
 
+<<<<<<< 6b2e273246b704af7e62dbb578526efa7632935b:testMap.html
         var ctaLayer = new google.maps.KmlLayer({
           url: 'https://github.com/chrys1994/geolocation/blob/master/cta.kml',
           map: map
         });
+=======
+       //var ctaLayer = new google.maps.KmlLayer({
+        //  url: 'https://github.com/chrys1994/geolocation/blob/master/cta.kml',
+        //  map: map
+        //});
+		
+		function loadPlacemarks() {
+    var src = "C:\Users\cciotola\Desktop\geolocation\cta.kml";
+    var kmlLayer = new google.maps.KmlLayer(src, {
+        suppressInfoWindows: false,
+        preserveViewport: true,
+        map: map,
+        zIndex: 999
+    });
+	}
+>>>>>>> commit2:new 2.html
       }
     </script>
     <script async defer
